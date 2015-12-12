@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -21,10 +22,12 @@ namespace Assets.Script
         private int howManyCar;
         public Gobject g;
         public Vector3 przesun;
+        private List<GameObject> listaGO;
         public void Start()
         {
+            listaGO = new List<GameObject>();
             howManyCar = 2;
-            przesun = new Vector3(0.2f, 0f, 0f);
+            listaGO.Add(g.poprzednik);
             createAllCar();
         }
         public void addCar()
@@ -71,6 +74,7 @@ namespace Assets.Script
         {
             GameObject tmp = Instantiate(c1, g.poprzednik.transform.position - przesun, g.poprzednik.transform.rotation) as GameObject;
             g.poprzednik = tmp;
+            listaGO.Add(tmp);
             tmp.transform.parent = g.poprzednik.transform;
         }
         void OnCollisionEnter(Collision collision)
@@ -84,7 +88,10 @@ namespace Assets.Script
         }
         void Update()
         {
-            
+            for(int i=1;i<howManyCar;i++)
+            {
+                listaGO[i].transform.position = listaGO[i - 1].transform.position;
+            }
         }
     }
 }
