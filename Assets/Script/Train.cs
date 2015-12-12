@@ -14,11 +14,11 @@ namespace Assets.Script
         public GameObject car2;
         public GameObject car3;
         public GameObject car4;
+        public GameObject locomotiva;
         public GameObject poprzednik;
     }
     class Train : MonoBehaviour
     {
-        public AudioSource audio;
         private int howManyCar;
         public Gobject g;
         public Vector3 przesun;
@@ -28,6 +28,7 @@ namespace Assets.Script
             listaGO = new List<GameObject>();
             howManyCar = 2;
             listaGO.Add(g.poprzednik);
+            createLocomotive();
             createAllCar();
         }
         public void addCar()
@@ -40,8 +41,7 @@ namespace Assets.Script
         }
         public void createAllCar()
         {
-            przesun = new Vector3(0.2f, 0f, 0f);
-            for(int i=0;i<=howManyCar;i++)
+            for(int i=0;i<howManyCar;i++)
             {
                 int wagon = Random.Range(1,4);
                 switch(wagon)
@@ -70,21 +70,19 @@ namespace Assets.Script
                 
             }
         }
+        private void createLocomotive()
+        {
+            GameObject tmp = Instantiate(g.locomotiva, g.poprzednik.transform.position, g.poprzednik.transform.rotation) as GameObject;
+            tmp.transform.parent = g.poprzednik.transform;
+            g.poprzednik = tmp;
+            listaGO.Add(tmp);
+        }
         private void createCar(GameObject c1)
         {
             GameObject tmp = Instantiate(c1, g.poprzednik.transform.position - przesun, g.poprzednik.transform.rotation) as GameObject;
+            tmp.transform.parent = g.poprzednik.transform;
             g.poprzednik = tmp;
             listaGO.Add(tmp);
-            tmp.transform.parent = g.poprzednik.transform;
-        }
-        void OnCollisionEnter(Collision collision)
-        {
-            foreach (ContactPoint contact in collision.contacts)
-            {
-                Destroy(collision.gameObject);
-                audio.Play();
-            }
-
         }
         void Update()
         {
