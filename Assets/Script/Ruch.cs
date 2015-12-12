@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Control : MonoBehaviour {
+public class Ruch : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
