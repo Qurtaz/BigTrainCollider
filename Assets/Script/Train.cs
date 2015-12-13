@@ -26,7 +26,7 @@ namespace Assets.Script
         public void Start()
         {
             listaGO = new List<GameObject>();
-            howManyCar = 2;
+            howManyCar = 3;
             listaGO.Add(g.poprzednik);
             createLocomotive();
             createAllCar();
