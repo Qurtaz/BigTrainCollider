@@ -40,7 +40,7 @@ public class HOPathDemoBrain : MonoBehaviour
 	    HOTween.To(CubeTrans1, speedtime*factor, new TweenParms()
 		.Prop( "position", CubeTrans1.GetComponent<HOPath>().MakePlugVector3Path().OrientToPath())
 		    //.Prop("rotation", new Vector3(0, 0, 0), true)
-			//.Loops(-1, LoopType.Yoyo)
+			.Loops(-1, LoopType.Restart)
 			.Ease(EaseType.Linear)));
 	   // HOTween.To(CubeTrans2, 2, new TweenParms()
 		//	.Prop( "position", CubeTrans2.GetComponent<HOPath>().MakePlugVector3Path(), true)

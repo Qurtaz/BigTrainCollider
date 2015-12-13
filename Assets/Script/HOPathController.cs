@@ -4,6 +4,7 @@ using Holoville.HOTween.Path;
 using Holoville.HOTween.Plugins;
 using Holoville.HOTween.Plugins.Core;
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Some example of how to create tweens with HOTween.
@@ -65,7 +66,8 @@ public class HOPathController : HOPathDemoBrain
 
 	void Update ()
 	{
-		if (zwrotnica.sequence.isComplete) {
+		float distance = Vector3.Distance (CubeTrans1.transform.position, zwrotnica.CubeTrans1.transform.position);  
+		if (zwrotnica.sequence.isComplete && distance <  1) {
 
 			zwrotnicaObject.tag = "Non-active";
 			sequence.Play();
