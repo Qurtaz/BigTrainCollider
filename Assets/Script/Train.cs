@@ -26,6 +26,7 @@ namespace Assets.Script
         private List<GameObject> listaGO;
         private Vector3 rotacja;
         private Vector3 skala;
+        public string tag;
         public void Start()
         {
             listaGO = new List<GameObject>();
@@ -81,6 +82,7 @@ namespace Assets.Script
         {
             GameObject tmp = Instantiate(g.locomotiva, g.poprzednik.transform.position , g.poprzednik.transform.rotation) as GameObject;
             addPartice(tmp);
+            tmp.tag = tag;
             tmp.transform.parent = g.poprzednik.transform;
             g.poprzednik = tmp;
             listaGO.Add(tmp);
@@ -98,7 +100,7 @@ namespace Assets.Script
             {
                 tmp.transform.localPosition = przesun;
             }
-            
+            tmp.tag = tag;
             g.poprzednik = tmp;
             listaGO.Add(tmp);
         }

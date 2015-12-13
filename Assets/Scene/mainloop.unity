@@ -848,7 +848,7 @@ GameObject:
   - 23: {fileID: 706665513}
   m_Layer: 0
   m_Name: Quad
-  m_TagString: Untagged
+  m_TagString: Grund
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1273,7 +1273,7 @@ GameObject:
   - 23: {fileID: 1166790865}
   m_Layer: 0
   m_Name: Grund
-  m_TagString: Untagged
+  m_TagString: Grund
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1374,6 +1374,7 @@ MonoBehaviour:
     poprzednik: {fileID: 1188771924}
     particle: {fileID: 160222, guid: ce142f9f3c463c244b0476085be54694, type: 2}
   przesun: {x: 0, y: -1.04999995, z: 0}
+  tag: Player
 --- !u!114 &1188771926
 MonoBehaviour:
   m_ObjectHideFlags: 0
