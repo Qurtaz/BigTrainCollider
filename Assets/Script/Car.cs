@@ -3,12 +3,15 @@ using System.Collections;
 
 public class Car : MonoBehaviour {
     public AudioSource audio;
+    public GameObject partice;
     void OnCollisionEnter(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
         {
-            Destroy(collision.gameObject);
+            Debug.Log(audio);
             audio.Play();
+            Instantiate(partice, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+            Destroy(collision.gameObject);
         }
     }
 }

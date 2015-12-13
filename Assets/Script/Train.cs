@@ -24,13 +24,19 @@ namespace Assets.Script
         public Gobject g;
         public Vector3 przesun;
         private List<GameObject> listaGO;
+        private Vector3 rotacja;
+        private Vector3 skala;
         public void Start()
         {
             listaGO = new List<GameObject>();
+            rotacja = new Vector3(90f, 0, 0);
             howManyCar = 3;
             listaGO.Add(g.poprzednik);
             createLocomotive();
             createAllCar();
+            listaGO[1].transform.Rotate(rotacja);
+            skala = new Vector3(0.1535039f, 0.2225809f, 0.1535039f);
+            listaGO[1].transform.localScale = new Vector3(1f, 1f, 1f);
         }
         public void addCar()
         {
@@ -73,7 +79,7 @@ namespace Assets.Script
         }
         private void createLocomotive()
         {
-            GameObject tmp = Instantiate(g.locomotiva, g.poprzednik.transform.position + new Vector3(0,0.2f,0) , g.poprzednik.transform.rotation) as GameObject;
+            GameObject tmp = Instantiate(g.locomotiva, g.poprzednik.transform.position , g.poprzednik.transform.rotation) as GameObject;
             addPartice(tmp);
             tmp.transform.parent = g.poprzednik.transform;
             g.poprzednik = tmp;
@@ -82,8 +88,17 @@ namespace Assets.Script
         private void createCar(GameObject c1)
         {
             Debug.Log(przesun);
-            GameObject tmp = Instantiate(c1, g.poprzednik.transform.position - przesun, g.poprzednik.transform.rotation) as GameObject;
+            GameObject tmp = Instantiate(c1, g.poprzednik.transform.position, g.poprzednik.transform.rotation) as GameObject;
             tmp.transform.parent = g.poprzednik.transform;
+            if(listaGO[1]==g.poprzednik)
+            {
+                tmp.transform.localPosition = new Vector3(0,-0.78f,0);
+            }
+            else
+            {
+                tmp.transform.localPosition = przesun;
+            }
+            
             g.poprzednik = tmp;
             listaGO.Add(tmp);
         }

@@ -1189,7 +1189,7 @@ MonoBehaviour:
     locomotiva: {fileID: 153028, guid: 4957686c4d311cd4a8bd7fd6096dec47, type: 2}
     poprzednik: {fileID: 1188771924}
     particle: {fileID: 160222, guid: ce142f9f3c463c244b0476085be54694, type: 2}
-  przesun: {x: 0, y: .349999994, z: 0}
+  przesun: {x: 0, y: -1.04999995, z: 0}
 --- !u!114 &1188771926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1377,7 +1377,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1241190475}
   m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381676, w: .875426054}
-  m_LocalPosition: {x: -4, y: 11.5, z: 3.43000007}
+  m_LocalPosition: {x: 15.0500002, y: 14.5699997, z: 18.6499996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2026,6 +2026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 2140117168}
+  partice: {fileID: 0}
 --- !u!82 &2140117168
 AudioSource:
   m_ObjectHideFlags: 0
