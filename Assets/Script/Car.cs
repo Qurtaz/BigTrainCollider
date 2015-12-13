@@ -4,6 +4,7 @@ using System.Collections;
 public class Car : MonoBehaviour {
     public AudioSource muzyka;
     public GameObject partice;
+    public GameObject koniecGry;
     void OnCollisionEnter(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
@@ -12,22 +13,25 @@ public class Car : MonoBehaviour {
             {
                 return;
             }
-                if(gameObject.transform.parent == collision.gameObject)
-                {
-                    return;
-                }
             else
             {
+                if(gameObject.transform.parent == collision.gameObject)
+                            {
+                                return;
+                            }
+                            else
+                            {
 
-                Debug.Log(gameObject.name);
-                Debug.Log(collision.gameObject.name);
-                muzyka.Play();
-                Instantiate(partice, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
-                Destroy(collision.gameObject);
-                Destroy(gameObject);
+                                Debug.Log(gameObject.name);
+                                Debug.Log(collision.gameObject.name);
+                                muzyka.Play();
+                                GameObject tmp =  Instantiate(partice, collision.gameObject.transform.position, collision.gameObject.transform.rotation) as GameObject;
+                                Destroy(collision.gameObject);
+                                Destroy(gameObject);
+                                Destroy(tmp);
+                                Instantiate(koniecGry);
+                            }
             }
-            
         }
-        
     }
 }

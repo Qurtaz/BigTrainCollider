@@ -13,6 +13,7 @@ GameObject:
   - 23: {fileID: 2387564}
   - 82: {fileID: 8222144}
   - 114: {fileID: 11430390}
+  - 54: {fileID: 5468360}
   m_Layer: 0
   m_Name: Lovomotive
   m_TagString: Untagged
@@ -65,6 +66,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 153028}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &5468360
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153028}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6506320
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -86,7 +102,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f33b9c7e387362b4bbaf3ab1100506a2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 823aeab81f312a949b753789e27b20cd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -158,8 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ceb016ba890664f8f954220b58bb84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 8222144}
+  muzyka: {fileID: 0}
   partice: {fileID: 177384, guid: 8169a0ed186b89e44a3662a6a35d96fd, type: 2}
+  koniecGry: {fileID: 164844, guid: f6e21125a529a0f43ad55dd2b9773c2d, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -178,7 +195,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: f33b9c7e387362b4bbaf3ab1100506a2, type: 3}
+      objectReference: {fileID: 8300000, guid: 823aeab81f312a949b753789e27b20cd, type: 3}
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
@@ -199,6 +216,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: .153503895
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: koniecGry
+      value: 
+      objectReference: {fileID: 164844, guid: f6e21125a529a0f43ad55dd2b9773c2d, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153028}
