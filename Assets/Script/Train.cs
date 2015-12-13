@@ -16,6 +16,7 @@ namespace Assets.Script
         public GameObject car4;
         public GameObject locomotiva;
         public GameObject poprzednik;
+        public GameObject particle;
     }
     class Train : MonoBehaviour
     {
@@ -72,24 +73,27 @@ namespace Assets.Script
         }
         private void createLocomotive()
         {
-            GameObject tmp = Instantiate(g.locomotiva, g.poprzednik.transform.position, g.poprzednik.transform.rotation) as GameObject;
+            GameObject tmp = Instantiate(g.locomotiva, g.poprzednik.transform.position + new Vector3(0,0.2f,0) , g.poprzednik.transform.rotation) as GameObject;
+            addPartice(tmp);
             tmp.transform.parent = g.poprzednik.transform;
             g.poprzednik = tmp;
             listaGO.Add(tmp);
         }
         private void createCar(GameObject c1)
         {
+            Debug.Log(przesun);
             GameObject tmp = Instantiate(c1, g.poprzednik.transform.position - przesun, g.poprzednik.transform.rotation) as GameObject;
             tmp.transform.parent = g.poprzednik.transform;
             g.poprzednik = tmp;
             listaGO.Add(tmp);
         }
+        void addPartice(GameObject temp)
+        {
+            GameObject tmp = Instantiate(g.particle, temp.transform.position - new Vector3(0, 0.04f, 0), temp.transform.rotation) as GameObject;
+            tmp.transform.parent = temp.transform;
+        }
         void Update()
         {
-            for(int i=1;i<howManyCar;i++)
-            {
-                listaGO[i].transform.position = listaGO[i - 1].transform.position;
-            }
         }
     }
 }
