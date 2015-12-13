@@ -4,23 +4,37 @@ using Holoville.HOTween.Path;
 using Holoville.HOTween.Plugins;
 using Holoville.HOTween.Plugins.Core;
 using UnityEngine;
+using System;
 
 /// <summary>
 /// Some example of how to create tweens with HOTween.
 /// To learn more and find more examples, go to http://hotween.holoville.com
 /// </summary>
-public class HOPathDemoBrain : MonoBehaviour
+public class HOPathController : HOPathDemoBrain
 {
-    public Transform CubeTrans1;
+    //public Transform CubeTrans1;
+	//public Sequence sequence;
+	//public GameObject zwrotnicaObject;
    // public Transform CubeTrans2;
-	public float speedtime;
-	public float factor = 1;
-	public Sequence sequence;
+	public HOPathDemoBrain zwrotnica;
+	private GameObject zwrotnicaObject;
     // ===================================================================================
     // UNITY METHODS ---------------------------------------------------------------------
 
-    public void Start()
+    void Start()
     {
+
+		zwrotnicaObject = GameObject.FindWithTag ("Last");
+		if (zwrotnicaObject != null)
+		{	
+			zwrotnica = zwrotnicaObject.GetComponent <HOPathDemoBrain>();
+		}
+		if (zwrotnicaObject == null)
+		{
+			Debug.Log ("Cannot find 'HOPathDemoBrain' script");
+		}
+		//zwrotnicaObject.tag = "Non-active";
+
         // HOTWEEN INITIALIZATION
         // Must be done only once, before the creation of your first tween
         // (you can skip this if you want, and HOTween will be initialized automatically
@@ -37,19 +51,29 @@ public class HOPathDemoBrain : MonoBehaviour
 
 		sequence = new Sequence (new SequenceParms ());//.Loops(-1, LoopType.Yoyo));
 		sequence.Append (
-	    HOTween.To(CubeTrans1, speedtime*factor, new TweenParms()
-		.Prop( "position", CubeTrans1.GetComponent<HOPath>().MakePlugVector3Path().OrientToPath())
+	    HOTween.To(CubeTrans1, 8, new TweenParms()
+			.Prop( "position", CubeTrans1.GetComponent<HOPath>().MakePlugVector3Path().OrientToPath())
 		    //.Prop("rotation", new Vector3(0, 0, 0), true)
-			.Loops(-1, LoopType.Restart)
+			.Loops(-1, LoopType.Yoyo)
 			.Ease(EaseType.Linear)));
 	   // HOTween.To(CubeTrans2, 2, new TweenParms()
 		//	.Prop( "position", CubeTrans2.GetComponent<HOPath>().MakePlugVector3Path(), true)
 		//	.Loops(-1, LoopType.Yoyo)
 		//	.Ease(EaseType.Linear));
-		sequence.Play ();
+	
 
     }
 
+	void Update ()
+	{
+		float distance = Vector3.Distance (CubeTrans1.transform.position, zwrotnica.CubeTrans1.transform.position);  
+		if (zwrotnica.sequence.isComplete && distance <  1) {
+
+			zwrotnicaObject.tag = "Non-active";
+			sequence.Play();
+			this.tag = "Last";
+		}
+	}
 
 
 }

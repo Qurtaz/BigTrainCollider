@@ -30,7 +30,7 @@ namespace Assets.Script
         {
             listaGO = new List<GameObject>();
             rotacja = new Vector3(90f, 0, 0);
-            howManyCar = 3;
+            howManyCar = 0;
             listaGO.Add(g.poprzednik);
             createLocomotive();
             createAllCar();
@@ -104,7 +104,7 @@ namespace Assets.Script
         }
         void addPartice(GameObject temp)
         {
-            GameObject tmp = Instantiate(g.particle, temp.transform.position - new Vector3(0, 0.04f, 0), temp.transform.rotation) as GameObject;
+            GameObject tmp = Instantiate(g.particle, temp.transform.position - new Vector3(0.1f, -0.1f,0), temp.transform.rotation) as GameObject;
             tmp.transform.parent = temp.transform;
         }
         void Update()
