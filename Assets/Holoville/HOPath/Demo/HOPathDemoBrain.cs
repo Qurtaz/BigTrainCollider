@@ -13,10 +13,13 @@ public class HOPathDemoBrain : MonoBehaviour
 {
     public Transform CubeTrans1;
    // public Transform CubeTrans2;
+	public float speedtime;
+	public float factor = 1;
+	public Sequence sequence;
     // ===================================================================================
     // UNITY METHODS ---------------------------------------------------------------------
 
-    void Start()
+    public void Start()
     {
         // HOTWEEN INITIALIZATION
         // Must be done only once, before the creation of your first tween
@@ -32,15 +35,21 @@ public class HOPathDemoBrain : MonoBehaviour
         // and applying an animation that will last 4 seconds
 
 
-	    HOTween.To(CubeTrans1, 8, new TweenParms()
-		    .Prop("rotation", new Vector3(0, 0, 0), true)
-			.Prop( "position", CubeTrans1.GetComponent<HOPath>().MakePlugVector3Path().OrientToPath()) 
-			.Loops(-1, LoopType.Yoyo)
-			.Ease(EaseType.Linear));
+		sequence = new Sequence (new SequenceParms ());//.Loops(-1, LoopType.Yoyo));
+		sequence.Append (
+	    HOTween.To(CubeTrans1, speedtime*factor, new TweenParms()
+		.Prop( "position", CubeTrans1.GetComponent<HOPath>().MakePlugVector3Path().OrientToPath())
+		    //.Prop("rotation", new Vector3(0, 0, 0), true)
+			//.Loops(-1, LoopType.Yoyo)
+			.Ease(EaseType.Linear)));
 	   // HOTween.To(CubeTrans2, 2, new TweenParms()
 		//	.Prop( "position", CubeTrans2.GetComponent<HOPath>().MakePlugVector3Path(), true)
 		//	.Loops(-1, LoopType.Yoyo)
 		//	.Ease(EaseType.Linear));
+		sequence.Play ();
+
     }
+
+
 
 }
