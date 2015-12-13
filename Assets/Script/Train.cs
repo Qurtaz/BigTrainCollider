@@ -87,12 +87,12 @@ namespace Assets.Script
         }
         private void createCar(GameObject c1)
         {
-            Debug.Log(przesun);
+            //Debug.Log(przesun);
             GameObject tmp = Instantiate(c1, g.poprzednik.transform.position, g.poprzednik.transform.rotation) as GameObject;
             tmp.transform.parent = g.poprzednik.transform;
             if(listaGO[1]==g.poprzednik)
             {
-                tmp.transform.localPosition = new Vector3(0,-0.78f,0);
+                tmp.transform.localPosition = new Vector3(0,-0.90f,0);
             }
             else
             {
